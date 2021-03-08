@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,34 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route that sends back a view
-Route::get('/', function () {
-    return view('welcome');
-});
+//new
+Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products/about',[ProductsController::class, 'about']);
 
-//Route to users - 문자열
-Route::get('/users', function (){
-    return 'Welcome to the user page';
-});
+//also new
+//Route::get('/products', 'App\Http\Controllers\ProductsController@index');
 
-//Route to users - Array(JSON)
-Route::get('/users', function (){
-    return ['PHP', 'HTML', 'Laravel']; 
-});
 
-//Route to users - JSON object
-Route::get('/users', function () {
-    return response()->json([
-        'name' => 'Kim',
-        'course' => 'Laravel Beginners To Advance'
-    ]);
-});
-
-//Route to users - function
-Route::get('/users' , function() {
-    return redirect('/');
-});
-
+//Before Laravel 8
+//Route::get('/products', 'ProductsController@index');
 
 //firstproject.com == / 
 //firstporjoect.com/users == /users
