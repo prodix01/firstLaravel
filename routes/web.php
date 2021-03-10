@@ -14,10 +14,5 @@ use App\Http\Controllers\ProductsController;
 */
 
 
-Route::get('/products', [ProductsController::class, 'index']);
-Route::get('/products/about',[ProductsController::class, 'about']);
-
-Route::get('products/{name}/{id}', [ProductsController::class, 'show'])->where([
-    'name' => '[a-z]+',
-    'id' => '[0-9]+'
-]);
+Route::get('/products', 
+    [ProductsController::class, 'index'])->name('products');
