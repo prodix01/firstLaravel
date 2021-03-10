@@ -13,16 +13,11 @@ use App\Http\Controllers\ProductsController;
 |
 */
 
-//new
+
 Route::get('/products', [ProductsController::class, 'index']);
 Route::get('/products/about',[ProductsController::class, 'about']);
 
-//also new
-//Route::get('/products', 'App\Http\Controllers\ProductsController@index');
-
-
-//Before Laravel 8
-//Route::get('/products', 'ProductsController@index');
-
-//firstproject.com == / 
-//firstporjoect.com/users == /users
+Route::get('products/{name}/{id}', [ProductsController::class, 'show'])->where([
+    'name' => '[a-z]+',
+    'id' => '[0-9]+'
+]);
